@@ -89,7 +89,7 @@
 
 .btn_close{
   position: absolute;
-  top: 0;
+  top: 1px;
   right: 0;
   color: #fff;
   background-color: #fd4747;
