@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Nav from './components/Nav';
+import Body from './components/Body'
+import {userContext} from "./utils/userContext";
+import {PropTypesInt} from "./utils/propTypes";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [name, setName] = useState('Monsterid');
+    const [avatar, setAvatar] = useState("https://www.gravatar.com/avatar/0?d=monsterid");
+    const [showModal, setShowModal] = useState(false);
+
+    const contextValue: PropTypesInt = {
+        name: name,
+        avatar: avatar,
+        showModal: showModal,
+        setShowModal: setShowModal,
+        setAvatar: setAvatar,
+        setName: setName
+    };
+
+    return (
+        <div className="app">
+            <userContext.Provider value={contextValue}>
+                <Nav/>
+                <Body/>
+            </userContext.Provider>
+
+        </div>
+    );
 }
 
 export default App;
